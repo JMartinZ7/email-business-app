@@ -1,5 +1,5 @@
-require("dotenv").config();
-const axios = require("axios");
+require('dotenv').config();
+const axios = require('axios');
 
 async function enviarCorreo(destinatario, asunto, cuerpo) {
   const response = await axios.post(
@@ -11,11 +11,5 @@ async function enviarCorreo(destinatario, asunto, cuerpo) {
     }
   );
 
-  return response.data;
+  console.log(response.data);
 }
-
-enviarCorreo(
-  "correo@ejemplo.com",
-  "Prueba",
-  "Hola, este es un correo de prueba"
-);
