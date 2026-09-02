@@ -1,0 +1,19 @@
+name: Enviar Correo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Llamar Apps Script
+        run: |
+          curl -X POST "${{ secrets.GOOGLE_SCRIPT_URL }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "destinatario":"correo@ejemplo.com",
+            "asunto":"Prueba desde GitHub",
+            "cuerpo":"Hola, este correo fue enviado mediante GitHub Actions."
+          }'
